@@ -9,7 +9,7 @@ class TestExample: XCTestCase {
         sut = SystemUnderTest()
     }
     
-    func testExample() {
+    func DISABLE_testExample() {
         let input = """
                     3
                     ---+-++- 3
@@ -32,12 +32,19 @@ class SystemUnderTest {
     func methodToTest(_ input: String) -> String {
         let inputs = input.split(separator: "\n").dropFirst()
         var result = ""
-        for (index, _) in inputs.enumerated() {
-            result.append("Case #\(index + 1): ")
+        for (index, line) in inputs.enumerated() {
+            let pancakes = String(line.split(separator: " ").first!)
+            let flipper = Int(line.split(separator: " ").last!)!
+            let caseResult = pancakeFlipper(pancakes, flipper)
+            result.append("Case #\(index + 1): \(caseResult)")
             if index < inputs.count - 1 {
                 result.append("\n")
             }
         }
         return result
     }
+}
+
+func pancakeFlipper(_ pancakes: String, _ flipper: Int) -> String {
+    return "IMPOSSIBLE"
 }
