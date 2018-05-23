@@ -2,49 +2,115 @@ import XCTest
 
 class TestExample: XCTestCase {
 
-    var sut: SystemUnderTest!
-
-    override func setUp() {
-        super.setUp()
-        sut = SystemUnderTest()
+    func testLast() {
+        XCTAssertEqual(8,  List(1, 1, 2, 3, 5, 8).last)
     }
-    
-    func DISABLE_testExample() {
-        let input = """
-                    3
-                    ---+-++- 3
-                    +++++ 4
-                    -+-+- 4
-                    """
 
-        let output = sut.methodToTest(input)
+    func testPennultimate() {
+        XCTAssertEqual(5,  List(1, 1, 2, 3, 5, 8).pennultimate)
+    }
 
-        let expected = """
-                        Case #1: 3
-                        Case #2: 0
-                        Case #3: IMPOSSIBLE
-                        """
-        XCTAssertEqual(expected, output)
+    func testSubscript() {
+        XCTAssertEqual(3,  List(1, 1, 2, 3, 5, 8)[3])
+    }
+
+    func testLength() {
+        XCTAssertEqual(6,  List(1, 1, 2, 3, 5, 8).length)
+        XCTAssertEqual(0,  List<Int>().length)
+        XCTAssertEqual(1,  List(1).length)
     }
 }
 
-class SystemUnderTest {
-    func methodToTest(_ input: String) -> String {
-        let inputs = input.split(separator: "\n").dropFirst()
-        var result = ""
-        for (index, line) in inputs.enumerated() {
-            let pancakes = String(line.split(separator: " ").first!)
-            let flipper = Int(line.split(separator: " ").last!)!
-            let caseResult = pancakeFlipper(pancakes, flipper)
-            result.append("Case #\(index + 1): \(caseResult)")
-            if index < inputs.count - 1 {
-                result.append("\n")
-            }
+class Node<T> {
+    let value: T
+    var next: Node?
+    init(_ value: T) {
+        self.value = value
+    }
+}
+
+class List<T> {
+
+    var head: Node<T>?
+
+    var lastNode: Node<T>? {
+        guard var node = head else {
+            return nil
         }
-        return result
+
+        while let next = node.next {
+            node = next
+        }
+        return node
+    }
+
+    var last: T? {
+        return lastNode?.value
+    }
+
+    convenience init(_ values: T...) {
+        self.init(values)
+    }
+
+    init(_ values: [T]) {
+        if values.isEmpty { return }
+        for element in values {
+            self.append(element)
+        }
+    }
+
+    func append(_ value: T) {
+        let newNode = Node(value)
+        self.append(newNode)
+    }
+
+    func append(_ node: Node<T>) {
+        let newNode = node
+        if let lastNode = lastNode {
+            lastNode.next = newNode
+        } else {
+            head = newNode
+        }
+    }
+
+    subscript(index: Int) -> T {
+        get {
+            var current = head
+            for _ in 1...index {
+                current = current?.next
+            }
+            return current!.value
+        }
+        set(newValue) {
+        }
     }
 }
 
-func pancakeFlipper(_ pancakes: String, _ flipper: Int) -> String {
-    return "IMPOSSIBLE"
+extension List {
+    var pennultimate: T? {
+        guard var node = head else {
+            return nil
+        }
+
+        while let next = node.next?.next {
+            node = next
+        }
+        return node.value
+    }
+}
+
+extension List {
+    var length: Int {
+        guard var node = head else {
+            return 0
+        }
+
+        var lenght = 1
+
+        while let next = node.next {
+            node = next
+            lenght += 1
+        }
+        return lenght
+    }
 }
