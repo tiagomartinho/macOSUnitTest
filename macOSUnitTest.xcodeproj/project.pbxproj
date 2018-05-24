@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EAE613EB201C91E300D0C613 /* TestExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE613EA201C91E300D0C613 /* TestExample.swift */; };
+		EA2A5E2E20B6E99E003F3A62 /* DrinkMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A5E2D20B6E99E003F3A62 /* DrinkMaker.swift */; };
+		EA2A5E3020B6E9AE003F3A62 /* CoffeeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A5E2F20B6E9AE003F3A62 /* CoffeeMachine.swift */; };
+		EAE613EB201C91E300D0C613 /* TestCoffeeMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE613EA201C91E300D0C613 /* TestCoffeeMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA2A5E2D20B6E99E003F3A62 /* DrinkMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkMaker.swift; sourceTree = "<group>"; };
+		EA2A5E2F20B6E9AE003F3A62 /* CoffeeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeMachine.swift; sourceTree = "<group>"; };
 		EAE613E7201C91E300D0C613 /* UnitTestBundle.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestBundle.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAE613EA201C91E300D0C613 /* TestExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestExample.swift; sourceTree = "<group>"; };
+		EAE613EA201C91E300D0C613 /* TestCoffeeMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoffeeMachine.swift; sourceTree = "<group>"; };
 		EAE613EC201C91E300D0C613 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,7 +50,9 @@
 		EAE613E9201C91E300D0C613 /* UnitTestBundle */ = {
 			isa = PBXGroup;
 			children = (
-				EAE613EA201C91E300D0C613 /* TestExample.swift */,
+				EA2A5E2F20B6E9AE003F3A62 /* CoffeeMachine.swift */,
+				EA2A5E2D20B6E99E003F3A62 /* DrinkMaker.swift */,
+				EAE613EA201C91E300D0C613 /* TestCoffeeMachine.swift */,
 				EAE613F0201C928C00D0C613 /* Supporting Files */,
 			);
 			path = UnitTestBundle;
@@ -127,7 +133,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE613EB201C91E300D0C613 /* TestExample.swift in Sources */,
+				EAE613EB201C91E300D0C613 /* TestCoffeeMachine.swift in Sources */,
+				EA2A5E2E20B6E99E003F3A62 /* DrinkMaker.swift in Sources */,
+				EA2A5E3020B6E9AE003F3A62 /* CoffeeMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +264,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tm.UnitTestBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -314,6 +323,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tm.UnitTestBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
